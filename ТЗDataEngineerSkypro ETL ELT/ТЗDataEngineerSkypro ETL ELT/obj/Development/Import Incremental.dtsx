@@ -1,0 +1,2578 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/10/2023 11:35:46 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-739MV10"
+  DTS:CreatorName="DESKTOP-739MV10\mehma"
+  DTS:DTSID="{C991F54C-8609-4B59-A6F5-ACFBDA3EFC6C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1049"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{6925028B-9CCB-4D87-A820-C1B047CB46EC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Import course"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1ec1e23d-ee37-4386-8840-93e3b67f1fdd}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import course"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import course\Destination course"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination course"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[course]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import course\Destination course.Connections[OleDbConnection]"
+                  connectionManagerID="{12065079-AA2F-44CB-9FEA-844558FD877A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DataEngineerDWHStaging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].Columns[title]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="title"
+                      externalMetadataColumnId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      externalMetadataColumnId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[created_at]" />
+                    <inputColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].Columns[updated_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="updated_at"
+                      externalMetadataColumnId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[updated_at]" />
+                    <inputColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].Columns[deleted_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="deleted_at"
+                      externalMetadataColumnId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[deleted_at]" />
+                    <inputColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].Columns[icon_url]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="icon_url"
+                      externalMetadataColumnId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[icon_url]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[icon_url]" />
+                    <inputColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].Columns[is_auto_course_enroll]"
+                      cachedDataType="bool"
+                      cachedName="is_auto_course_enroll"
+                      externalMetadataColumnId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[is_auto_course_enroll]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[is_auto_course_enroll]" />
+                    <inputColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].Columns[is_demo_enroll]"
+                      cachedDataType="bool"
+                      cachedName="is_demo_enroll"
+                      externalMetadataColumnId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[is_demo_enroll]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[is_demo_enroll]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[icon_url]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="icon_url" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[is_auto_course_enroll]"
+                      dataType="bool"
+                      name="is_auto_course_enroll" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Destination course.Inputs[OLE DB Destination Input].ExternalColumns[is_demo_enroll]"
+                      dataType="bool"
+                      name="is_demo_enroll" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import course\Destination course.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import course\Destination course.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import course\Destination course.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import course\Destination course.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import course\Destination course.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import course\Destination course.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import course\Source course"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source course"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT c.[id]
+      ,c.[title]
+      ,c.[created_at]
+      ,c.[updated_at]
+      ,c.[deleted_at]
+      ,c.[icon_url]
+      ,c.[is_auto_course_enroll]
+      ,c.[is_demo_enroll]
+  FROM [DataEngineerHW].[dbo].[course] c
+ inner join CHANGETABLE(CHANGES course, 0) AS ch ON ch.Id = c.id</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import course\Source course.Connections[OleDbConnection]"
+                  connectionManagerID="{F2076316-18CC-422B-9B0A-9542692CF5E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DataEngineerHW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import course\Source course.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[title]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      length="255"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[title]"
+                      name="title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[created_at]"
+                      name="created_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[updated_at]"
+                      name="updated_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[deleted_at]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[deleted_at]"
+                      name="deleted_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[icon_url]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[icon_url]"
+                      length="255"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[icon_url]"
+                      name="icon_url"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[is_auto_course_enroll]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[is_auto_course_enroll]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[is_auto_course_enroll]"
+                      name="is_auto_course_enroll"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[is_demo_enroll]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[is_demo_enroll]"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Output].Columns[is_demo_enroll]"
+                      name="is_demo_enroll"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[icon_url]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="icon_url" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[is_auto_course_enroll]"
+                      dataType="bool"
+                      name="is_auto_course_enroll" />
+                    <externalMetadataColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Output].ExternalColumns[is_demo_enroll]"
+                      dataType="bool"
+                      name="is_demo_enroll" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import course\Source course.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[title]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[title]"
+                      name="title" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[deleted_at]"
+                      name="deleted_at" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[icon_url]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[icon_url]"
+                      name="icon_url" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[is_auto_course_enroll]"
+                      dataType="bool"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[is_auto_course_enroll]"
+                      name="is_auto_course_enroll" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[is_demo_enroll]"
+                      dataType="bool"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[is_demo_enroll]"
+                      name="is_demo_enroll" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import course\Source course.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import course.Paths[OLE DB Source Output]"
+              endId="Package\Import course\Destination course.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import course\Source course.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import stream"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{644c0f72-ea9b-4c90-a321-6cddc6ad9bef}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import stream"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import stream\Destination stream"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination stream"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stream]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import stream\Destination stream.Connections[OleDbConnection]"
+                  connectionManagerID="{12065079-AA2F-44CB-9FEA-844558FD877A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DataEngineerDWHStaging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].Columns[course_id]"
+                      cachedDataType="i4"
+                      cachedName="course_id"
+                      externalMetadataColumnId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[course_id]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[course_id]" />
+                    <inputColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].Columns[start_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="start_at"
+                      externalMetadataColumnId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[start_at]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[start_at]" />
+                    <inputColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].Columns[end_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="end_at"
+                      externalMetadataColumnId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[end_at]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[end_at]" />
+                    <inputColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      externalMetadataColumnId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[created_at]" />
+                    <inputColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].Columns[updated_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="updated_at"
+                      externalMetadataColumnId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[updated_at]" />
+                    <inputColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].Columns[deleted_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="deleted_at"
+                      externalMetadataColumnId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[deleted_at]" />
+                    <inputColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].Columns[is_open]"
+                      cachedDataType="bool"
+                      cachedName="is_open"
+                      externalMetadataColumnId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[is_open]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[is_open]" />
+                    <inputColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].Columns[name]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].Columns[homework_deadline_days]"
+                      cachedDataType="i4"
+                      cachedName="homework_deadline_days"
+                      externalMetadataColumnId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[homework_deadline_days]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[homework_deadline_days]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[course_id]"
+                      dataType="i4"
+                      name="course_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[start_at]"
+                      dataType="dbTimeStamp"
+                      name="start_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[end_at]"
+                      dataType="dbTimeStamp"
+                      name="end_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[is_open]"
+                      dataType="bool"
+                      name="is_open" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input].ExternalColumns[homework_deadline_days]"
+                      dataType="i4"
+                      name="homework_deadline_days" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import stream\Destination stream.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import stream\Destination stream.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import stream\Destination stream.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import stream\Destination stream.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import stream\Destination stream.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import stream\Source stream"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source stream"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT s.[id]
+      ,s.[course_id]
+      ,s.[start_at]
+      ,s.[end_at]
+      ,s.[created_at]
+      ,s.[updated_at]
+      ,s.[deleted_at]
+      ,s.[is_open]
+      ,s.[name]
+      ,s.[homework_deadline_days]
+  FROM [DataEngineerHW].[dbo].[stream] s
+ inner join CHANGETABLE(CHANGES stream, 0) AS ch ON ch.Id = s.Id;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import stream\Source stream.Connections[OleDbConnection]"
+                  connectionManagerID="{F2076316-18CC-422B-9B0A-9542692CF5E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DataEngineerHW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[course_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[course_id]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[course_id]"
+                      name="course_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[start_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[start_at]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[start_at]"
+                      name="start_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[end_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[end_at]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[end_at]"
+                      name="end_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[created_at]"
+                      name="created_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[updated_at]"
+                      name="updated_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[deleted_at]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[deleted_at]"
+                      name="deleted_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[is_open]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[is_open]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[is_open]"
+                      name="is_open"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[name]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      length="255"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[homework_deadline_days]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[homework_deadline_days]"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].Columns[homework_deadline_days]"
+                      name="homework_deadline_days"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[course_id]"
+                      dataType="i4"
+                      name="course_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[start_at]"
+                      dataType="dbTimeStamp"
+                      name="start_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[end_at]"
+                      dataType="dbTimeStamp"
+                      name="end_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[is_open]"
+                      dataType="bool"
+                      name="is_open" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Output].ExternalColumns[homework_deadline_days]"
+                      dataType="i4"
+                      name="homework_deadline_days" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[course_id]"
+                      dataType="i4"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[course_id]"
+                      name="course_id" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[start_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[start_at]"
+                      name="start_at" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[end_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[end_at]"
+                      name="end_at" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[deleted_at]"
+                      name="deleted_at" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[is_open]"
+                      dataType="bool"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[is_open]"
+                      name="is_open" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[name]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[homework_deadline_days]"
+                      dataType="i4"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[homework_deadline_days]"
+                      name="homework_deadline_days" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import stream\Source stream.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import stream.Paths[OLE DB Source Output]"
+              endId="Package\Import stream\Destination stream.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import stream\Source stream.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import stream_module"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0cabd226-14c2-4d46-bcb9-c6c4c2297018}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import stream_module"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import stream_module\Destination stream_module"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination stream_module"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stream_module]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import stream_module\Destination stream_module.Connections[OleDbConnection]"
+                  connectionManagerID="{12065079-AA2F-44CB-9FEA-844558FD877A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DataEngineerDWHStaging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].Columns[stream_id]"
+                      cachedDataType="i4"
+                      cachedName="stream_id"
+                      externalMetadataColumnId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[stream_id]"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[stream_id]" />
+                    <inputColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].Columns[title]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="title"
+                      externalMetadataColumnId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      externalMetadataColumnId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[created_at]" />
+                    <inputColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].Columns[updated_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="updated_at"
+                      externalMetadataColumnId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[updated_at]" />
+                    <inputColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].Columns[order_in_stream]"
+                      cachedDataType="i4"
+                      cachedName="order_in_stream"
+                      externalMetadataColumnId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[order_in_stream]"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[order_in_stream]" />
+                    <inputColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].Columns[deleted_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="deleted_at"
+                      externalMetadataColumnId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[deleted_at]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[stream_id]"
+                      dataType="i4"
+                      name="stream_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[order_in_stream]"
+                      dataType="i4"
+                      name="order_in_stream" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import stream_module\Destination stream_module.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import stream_module\Destination stream_module.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module\Destination stream_module.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Destination stream_module.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module\Destination stream_module.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import stream_module\Source stream_module"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source stream_module"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT sm.[id]
+      ,sm.[stream_id]
+      ,sm.[title]
+      ,sm.[created_at]
+      ,sm.[updated_at]
+      ,sm.[order_in_stream]
+      ,sm.[deleted_at]
+  FROM [DataEngineerHW].[dbo].[stream_module] sm
+ inner join CHANGETABLE(CHANGES stream_module, 0) AS ch ON ch.Id = sm.Id</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import stream_module\Source stream_module.Connections[OleDbConnection]"
+                  connectionManagerID="{F2076316-18CC-422B-9B0A-9542692CF5E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DataEngineerHW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[stream_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[stream_id]"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[stream_id]"
+                      name="stream_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[title]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      length="255"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[title]"
+                      name="title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[created_at]"
+                      name="created_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[updated_at]"
+                      name="updated_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[order_in_stream]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[order_in_stream]"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[order_in_stream]"
+                      name="order_in_stream"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[deleted_at]"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].Columns[deleted_at]"
+                      name="deleted_at"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[stream_id]"
+                      dataType="i4"
+                      name="stream_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[order_in_stream]"
+                      dataType="i4"
+                      name="order_in_stream" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[stream_id]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[stream_id]"
+                      name="stream_id" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[title]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[title]"
+                      name="title" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[order_in_stream]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[order_in_stream]"
+                      name="order_in_stream" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[deleted_at]"
+                      name="deleted_at" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import stream_module.Paths[OLE DB Source Output]"
+              endId="Package\Import stream_module\Destination stream_module.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import stream_module\Source stream_module.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import stream_module_lesson"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{473bfaab-2d6d-45f3-a488-29f1e13a488e}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import stream_module_lesson"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import stream_module_lesson\Destination stream_module_lesson"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination stream_module_lesson"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stream_module_lesson]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Connections[OleDbConnection]"
+                  connectionManagerID="{12065079-AA2F-44CB-9FEA-844558FD877A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DataEngineerDWHStaging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].Columns[title]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="title"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].Columns[description]"
+                      cachedDataType="nText"
+                      cachedName="description"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].Columns[start_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="start_at"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[start_at]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[start_at]" />
+                    <inputColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].Columns[end_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="end_at"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[end_at]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[end_at]" />
+                    <inputColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].Columns[homework_url]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="500"
+                      cachedName="homework_url"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[homework_url]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[homework_url]" />
+                    <inputColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].Columns[teacher_id]"
+                      cachedDataType="i4"
+                      cachedName="teacher_id"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[teacher_id]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[teacher_id]" />
+                    <inputColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].Columns[stream_module_id]"
+                      cachedDataType="i4"
+                      cachedName="stream_module_id"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[stream_module_id]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[stream_module_id]" />
+                    <inputColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].Columns[deleted_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="deleted_at"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[deleted_at]" />
+                    <inputColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].Columns[online_lesson_join_url]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="online_lesson_join_url"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[online_lesson_join_url]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[online_lesson_join_url]" />
+                    <inputColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].Columns[online_lesson_recording_url]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="online_lesson_recording_url"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[online_lesson_recording_url]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[online_lesson_recording_url]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[start_at]"
+                      dataType="dbTimeStamp"
+                      name="start_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[end_at]"
+                      dataType="dbTimeStamp"
+                      name="end_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[homework_url]"
+                      codePage="1251"
+                      dataType="str"
+                      length="500"
+                      name="homework_url" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[teacher_id]"
+                      dataType="i4"
+                      name="teacher_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[stream_module_id]"
+                      dataType="i4"
+                      name="stream_module_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[online_lesson_join_url]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="online_lesson_join_url" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input].ExternalColumns[online_lesson_recording_url]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="online_lesson_recording_url" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module_lesson\Destination stream_module_lesson.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Destination stream_module_lesson.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module_lesson\Destination stream_module_lesson.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import stream_module_lesson\Source stream_module_lesson"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source stream_module_lesson"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT sml.[id]
+      ,sml.[title]
+      ,sml.[description]
+      ,sml.[start_at]
+      ,sml.[end_at]
+      ,sml.[homework_url]
+      ,sml.[teacher_id]
+      ,sml.[stream_module_id]
+      ,sml.[deleted_at]
+      ,sml.[online_lesson_join_url]
+      ,sml.[online_lesson_recording_url]
+  FROM [DataEngineerHW].[dbo].[stream_module_lesson] sml
+ inner join CHANGETABLE(CHANGES stream_module_lesson, 0) AS ch ON ch.Id = sml.Id
+ ;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import stream_module_lesson\Source stream_module_lesson.Connections[OleDbConnection]"
+                  connectionManagerID="{F2076316-18CC-422B-9B0A-9542692CF5E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DataEngineerHW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[title]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      length="255"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[title]"
+                      name="title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[description]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[description]"
+                      name="description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[start_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[start_at]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[start_at]"
+                      name="start_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[end_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[end_at]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[end_at]"
+                      name="end_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[homework_url]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[homework_url]"
+                      length="500"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[homework_url]"
+                      name="homework_url"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[teacher_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[teacher_id]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[teacher_id]"
+                      name="teacher_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[stream_module_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[stream_module_id]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[stream_module_id]"
+                      name="stream_module_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[deleted_at]"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[deleted_at]"
+                      name="deleted_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[online_lesson_join_url]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[online_lesson_join_url]"
+                      length="255"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[online_lesson_join_url]"
+                      name="online_lesson_join_url"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[online_lesson_recording_url]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[online_lesson_recording_url]"
+                      length="255"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].Columns[online_lesson_recording_url]"
+                      name="online_lesson_recording_url"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[start_at]"
+                      dataType="dbTimeStamp"
+                      name="start_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[end_at]"
+                      dataType="dbTimeStamp"
+                      name="end_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[homework_url]"
+                      codePage="1251"
+                      dataType="str"
+                      length="500"
+                      name="homework_url" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[teacher_id]"
+                      dataType="i4"
+                      name="teacher_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[stream_module_id]"
+                      dataType="i4"
+                      name="stream_module_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[online_lesson_join_url]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="online_lesson_join_url" />
+                    <externalMetadataColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output].ExternalColumns[online_lesson_recording_url]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      name="online_lesson_recording_url" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[title]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[title]"
+                      name="title" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[description]"
+                      dataType="nText"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[start_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[start_at]"
+                      name="start_at" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[end_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[end_at]"
+                      name="end_at" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[homework_url]"
+                      codePage="1251"
+                      dataType="str"
+                      length="500"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[homework_url]"
+                      name="homework_url" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[teacher_id]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[teacher_id]"
+                      name="teacher_id" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[stream_module_id]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[stream_module_id]"
+                      name="stream_module_id" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[deleted_at]"
+                      name="deleted_at" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[online_lesson_join_url]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[online_lesson_join_url]"
+                      name="online_lesson_join_url" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[online_lesson_recording_url]"
+                      codePage="1251"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[online_lesson_recording_url]"
+                      name="online_lesson_recording_url" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import stream_module_lesson.Paths[OLE DB Source Output]"
+              endId="Package\Import stream_module_lesson\Destination stream_module_lesson.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import stream_module_lesson\Source stream_module_lesson.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate course"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{fae4bda6-8800-4b10-980c-10bb63939283}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate course"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{12065079-AA2F-44CB-9FEA-844558FD877A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE course" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate stream"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{96cdde5a-de4d-48e1-98ed-4a3acfaf6776}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate stream"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{12065079-AA2F-44CB-9FEA-844558FD877A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Stream" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate stream_module"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{40529962-0bbb-46be-92ad-2244fc9db22e}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate stream_module"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{12065079-AA2F-44CB-9FEA-844558FD877A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE stream_module" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate stream_module_lesson"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{ffbe5a5a-ba04-4fc6-a967-f480660667cf}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate stream_module_lesson"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{12065079-AA2F-44CB-9FEA-844558FD877A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE stream_module_lesson" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{dd61ca85-0907-4c81-8f71-a7ded45ffb29}"
+      DTS:From="Package\Truncate course"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Import course" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{a7023817-37dd-46bb-8821-e04fc93663fc}"
+      DTS:From="Package\Truncate stream"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Import stream" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{b96c6424-045a-4cc8-a4df-ae32faf99eb2}"
+      DTS:From="Package\Truncate stream_module"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Import stream_module" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{b28e587f-451b-4988-89f6-98118fa29a37}"
+      DTS:From="Package\Truncate stream_module_lesson"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Import stream_module_lesson" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{7713DBE5-63A8-4516-A18E-553569DA6D47}"
+      DTS:From="Package\Import course"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Truncate stream" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{1A43F002-B7B6-4BBE-8E41-560DD3623D54}"
+      DTS:From="Package\Import stream"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Truncate stream_module" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{04C427AA-8FE2-42F9-966A-CE936CBA682B}"
+      DTS:From="Package\Import stream_module"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Truncate stream_module_lesson" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="360,53.6"
+          Id="Package\Import course"
+          TopLeft="355.052071609018,200.488097623435" />
+        <NodeLayout
+          Size="360,53.6"
+          Id="Package\Import stream"
+          TopLeft="355.052071609018,451.064289398931" />
+        <NodeLayout
+          Size="360,53.6"
+          Id="Package\Import stream_module"
+          TopLeft="355.052071609018,701.640481174427" />
+        <NodeLayout
+          Size="360,53.6"
+          Id="Package\Import stream_module_lesson"
+          TopLeft="355.052071609018,952.216672949923" />
+        <NodeLayout
+          Size="360,53.6"
+          Id="Package\Truncate course"
+          TopLeft="355.052071609018,75.2000017356874" />
+        <NodeLayout
+          Size="360,53.6"
+          Id="Package\Truncate stream"
+          TopLeft="355.052071609018,325.776193511183" />
+        <NodeLayout
+          Size="360,53.6"
+          Id="Package\Truncate stream_module"
+          TopLeft="355.052071609018,576.352385286679" />
+        <NodeLayout
+          Size="360,53.6"
+          Id="Package\Truncate stream_module_lesson"
+          TopLeft="355.052071609018,826.928577062175" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="535.052071609018,128.800001735687">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.6880958877479"
+              Start="0,0"
+              End="0,64.1880958877479">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.1880958877479" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="535.052071609018,379.376193511183">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.688095887748"
+              Start="0,0"
+              End="0,64.188095887748">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.188095887748" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="535.052071609018,629.952385286679">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.688095887748"
+              Start="0,0"
+              End="0,64.188095887748">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.188095887748" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="535.052071609018,880.528577062175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.688095887748"
+              Start="0,0"
+              End="0,64.188095887748">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.188095887748" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="535.052071609018,254.088097623435">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.6880958877479"
+              Start="0,0"
+              End="0,64.1880958877479">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.1880958877479" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="535.052071609018,504.664289398931">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.688095887748"
+              Start="0,0"
+              End="0,64.188095887748">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.188095887748" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="535.052071609018,755.240481174427">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.688095887748"
+              Start="0,0"
+              End="0,64.188095887748">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.188095887748" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Import course">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Import course\Destination course"
+          TopLeft="63,204.000001136462" />
+        <NodeLayout
+          Size="145.6,41.6"
+          Id="Package\Import course\Source course"
+          TopLeft="74.999999801318,59" />
+        <EdgeLayout
+          Id="Package\Import course.Paths[OLE DB Source Output]"
+          TopLeft="146.599999900659,100.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,103.400001136462"
+              Start="0,0"
+              End="0,95.900001136462">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,95.900001136462" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import course\Destination course">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import course\Source course">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import stream">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Import stream\Destination stream"
+          TopLeft="461.666648321682,348.400002768834" />
+        <NodeLayout
+          Size="145.6,41.6"
+          Id="Package\Import stream\Source stream"
+          TopLeft="465.83331482278,205.400001632372" />
+        <EdgeLayout
+          Id="Package\Import stream.Paths[OLE DB Source Output]"
+          TopLeft="541.349981572231,247.000001632372">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,101.400001136462"
+              Start="0,0"
+              End="0,93.9000011364621">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,93.9000011364621" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import stream\Destination stream">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import stream\Source stream">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import stream_module">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\Import stream_module\Destination stream_module"
+          TopLeft="60,203.000001136462" />
+        <NodeLayout
+          Size="185.6,41.6"
+          Id="Package\Import stream_module\Source stream_module"
+          TopLeft="72.999999801318,59" />
+        <EdgeLayout
+          Id="Package\Import stream_module.Paths[OLE DB Source Output]"
+          TopLeft="164.099999900659,100.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,102.400001136462"
+              Start="0,0"
+              End="0,94.900001136462">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,94.900001136462" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import stream_module\Destination stream_module">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import stream_module\Source stream_module">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import stream_module_lesson">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="240.8,41.6"
+          Id="Package\Import stream_module_lesson\Destination stream_module_lesson"
+          TopLeft="60,203.000001136462" />
+        <NodeLayout
+          Size="221.6,41.6"
+          Id="Package\Import stream_module_lesson\Source stream_module_lesson"
+          TopLeft="69.999999801318,61" />
+        <EdgeLayout
+          Id="Package\Import stream_module_lesson.Paths[OLE DB Source Output]"
+          TopLeft="180.599999900659,102.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,100.400001136462"
+              Start="0,0"
+              End="0,92.900001136462">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,92.900001136462" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import stream_module_lesson\Destination stream_module_lesson">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import stream_module_lesson\Source stream_module_lesson">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/10/2023 11:51:31 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-739MV10"
+  DTS:CreatorName="DESKTOP-739MV10\mehma"
+  DTS:DTSID="{1A8053BB-5443-4C21-819C-AAFAF0E997E0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1049"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{27CC94ED-B538-4DF9-AF9E-6575C7681994}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Process Course"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2b82b7af-91ef-4246-9a99-04d5fb3d3aa8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process Course"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2C44F043-EED5-4C51-BBAE-73AC09DFC8B9}"
+          SQLTask:SqlStatementSource="MERGE [DataEngineerDWH].dbo.DCourse  t &#xA;    USING &#xA;&#x9;(SELECT    [id]&#xA;&#x9;&#x9;&#x9;  ,[title]&#xA;&#x9;&#x9;&#x9;  ,[created_at]&#xA;&#x9;&#x9;&#x9;  ,[updated_at]&#xA;&#x9;&#x9;&#x9;  ,[deleted_at]&#xA;&#x9;&#x9;&#x9;  ,[icon_url]&#xA;&#x9;&#x9;&#x9;  ,[is_auto_course_enroll]&#xA;&#x9;&#x9;&#x9;  ,[is_demo_enroll]&#xA;  FROM [DataEngineerDWHStage].[dbo].[course]) s&#xA;ON (s.[id] = t.[id])&#xA;WHEN MATCHED&#xA;    THEN UPDATE SET &#xA;               t.Title                =   s.[title]       &#xA;&#x9;&#x9;&#x9;  ,t.CreatedAt         &#x9;  =&#x9;  s.[created_at]&#xA;&#x9;&#x9;&#x9;  ,t.UpdatedAt         &#x9;  =&#x9;  s.[updated_at]&#xA;&#x9;&#x9;&#x9;  ,t.DeletedAt         &#x9;  =&#x9;  s.[deleted_at]&#xA;&#x9;&#x9;&#x9;  ,t.IconUrl           &#x9;  =&#x9;  s.[icon_url]&#xA;&#x9;&#x9;&#x9;  ,t.IsAutoCourseEnroll&#x9;  =&#x9;  s.[is_auto_course_enroll]&#xA;&#x9;&#x9;&#x9;  ,t.IsDemoEnroll      &#x9;  =&#x9;  s.[is_demo_enroll]&#xA;&#xA;WHEN NOT MATCHED BY TARGET &#xA;    THEN INSERT (Id, Title, CreatedAt,UpdatedAt,DeletedAt,IconUrl,IsAutoCourseEnroll,IsDemoEnroll)&#xA;         VALUES (s.Id,s.[title],s.[created_at],s.[updated_at],s.[deleted_at],s.[icon_url],s.[is_auto_course_enroll],s.[is_demo_enroll]);&#xA;--WHEN NOT MATCHED BY SOURCE &#xA;--    THEN DELETE;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Process Stream"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2059BCDE-4BDF-457C-820C-53DAF991AE45}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process Stream"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2C44F043-EED5-4C51-BBAE-73AC09DFC8B9}"
+          SQLTask:SqlStatementSource="MERGE [DataEngineerDWH].dbo.FStream  t &#xA;    USING &#xA;&#x9;(SELECT  [id]&#xA;&#x9;&#x9;&#x9;,[course_id]&#xA;&#x9;&#x9;&#x9;,[start_at]&#xA;&#x9;&#x9;&#x9;,[end_at]&#xA;&#x9;&#x9;&#x9;,[created_at]&#xA;&#x9;&#x9;&#x9;,[updated_at]&#xA;&#x9;&#x9;&#x9;,[deleted_at]&#xA;&#x9;&#x9;&#x9;,[is_open]&#xA;&#x9;&#x9;&#x9;,[name]&#xA;&#x9;&#x9;&#x9;,[homework_deadline_days]&#xA;  FROM [DataEngineerDWHStage].[dbo].[stream]) s&#xA;ON (s.[id] = t.[id])&#xA;WHEN MATCHED&#xA;    THEN UPDATE SET      &#xA;&#x9;&#x9;&#x9; t.CourseKey           &#x9;=s.[course_id]&#xA;&#x9;&#x9;&#x9;,t.StartAt             &#x9;=s.[start_at]&#xA;&#x9;&#x9;&#x9;,t.EndAt               &#x9;=s.[end_at]&#xA;&#x9;&#x9;&#x9;,t.CreatedAt           &#x9;=s.[created_at]&#xA;&#x9;&#x9;&#x9;,t.UpdatedAt           &#x9;=s.[updated_at]&#xA;&#x9;&#x9;&#x9;,t.DeletedAt           &#x9;=s.[deleted_at]&#xA;&#x9;&#x9;&#x9;,t.IsOpen              &#x9;=s.[is_open]&#xA;&#x9;&#x9;&#x9;,t.[Name]              &#x9;=s.[name]&#xA;&#x9;&#x9;&#x9;,t.HomeworkDeadlineDays  =s.[homework_deadline_days]&#xA;&#xA;WHEN NOT MATCHED BY TARGET &#xA;    THEN INSERT (Id,CourseKey,StartAt,EndAt,CreatedAt,UpdatedAt,DeletedAt,IsOpen,[Name],HomeworkDeadlineDays)&#xA;         VALUES (s.Id,s.[course_id],s.[start_at],s.[end_at],s.[created_at],s.[updated_at],s.[deleted_at],s.[is_open],s.[name],s.[homework_deadline_days]);&#xA;--WHEN NOT MATCHED BY SOURCE &#xA;--    THEN DELETE;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Process StreamModule"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{a64d66fb-4bb9-4c5b-b533-315ea8354abc}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process StreamModule"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2C44F043-EED5-4C51-BBAE-73AC09DFC8B9}"
+          SQLTask:SqlStatementSource="MERGE [DataEngineerDWH].dbo.FStreamModule  t &#xA;    USING &#xA;&#x9;(SELECT    sm.[id]&#xA;&#x9;&#x9;&#x9;  ,sm.[stream_id]&#xA;&#x9;&#x9;&#x9;  ,s.[CourseKey]&#xA;&#x9;&#x9;&#x9;  ,sm.[title]&#xA;&#x9;&#x9;&#x9;  ,sm.[created_at]&#xA;&#x9;&#x9;&#x9;  ,sm.[updated_at]&#xA;&#x9;&#x9;&#x9;  ,sm.[order_in_stream]&#xA;&#x9;&#x9;&#x9;  ,sm.[deleted_at]&#xA;  FROM [DataEngineerDWHStage].[dbo].[stream_module] sm&#xA;&#x9;&#x9;left join [DataEngineerDWH].[dbo].[FStream] s ON sm.[stream_id]=s.Id) s&#xA;ON (s.[id] = t.[id])&#xA;WHEN MATCHED&#xA;    THEN UPDATE SET      &#xA;&#x9;&#x9;  t.StreamKey    &#x9;  =s.[stream_id]&#xA;&#x9;&#x9; ,t.CourseKey&#x9;&#x9;  =s.[CourseKey]&#xA;&#x9;&#x9; ,t.Title        &#x9;  =s.[title]&#xA;&#x9;&#x9; ,t.CreatedAt    &#x9;  =s.[created_at]&#xA;&#x9;&#x9; ,t.UpdatedAt    &#x9;  =s.[updated_at]&#xA;&#x9;&#x9; ,t.OrderInStream&#x9;  =s.[order_in_stream]&#xA;&#x9;&#x9; ,t.DeletedAt    &#x9;  =s.[deleted_at]&#xA;&#xA;WHEN NOT MATCHED BY TARGET &#xA;    THEN INSERT (Id,StreamKey,CourseKey,Title,CreatedAt,UpdatedAt,OrderInStream,DeletedAt)&#xA;         VALUES (s.Id,s.[stream_id],s.[CourseKey],s.[title],s.[created_at],s.[updated_at],s.[order_in_stream],s.[deleted_at]);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Process StreamModuleLesson"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9ef3b8e6-7929-4e4b-a10a-9bfee65778f5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process StreamModuleLesson"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2C44F043-EED5-4C51-BBAE-73AC09DFC8B9}"
+          SQLTask:SqlStatementSource="MERGE [DataEngineerDWH].dbo.FStreamModuleLesson  t &#xA;    USING &#xA;&#x9;(SELECT    sml.[id]&#xA;&#x9;&#x9;&#x9;  ,sml.[title]&#xA;&#x9;&#x9;&#x9;  ,sml.[description]&#xA;&#x9;&#x9;&#x9;  ,sml.[start_at]&#xA;&#x9;&#x9;&#x9;  ,sml.[end_at]&#xA;&#x9;&#x9;&#x9;  ,sml.[homework_url]&#xA;&#x9;&#x9;&#x9;  ,sml.[teacher_id]&#xA;&#x9;&#x9;&#x9;  ,sml.[stream_module_id]&#xA;&#x9;&#x9;&#x9;  ,sm.StreamKey&#xA;&#x9;&#x9;&#x9;  ,sm.CourseKey&#xA;&#x9;&#x9;&#x9;  ,sml.[deleted_at]&#xA;&#x9;&#x9;&#x9;  ,sml.[online_lesson_join_url]&#xA;&#x9;&#x9;&#x9;  ,sml.[online_lesson_recording_url]&#xA;  FROM [DataEngineerDWHStage].[dbo].[stream_module_lesson] sml&#xA;&#x9;&#x9;left join [DataEngineerDWH].[dbo].[FStreamModule] sm ON sml.[stream_module_id]=sm.Id) s&#xA;ON (s.[id] = t.[id])&#xA;WHEN MATCHED&#xA;    THEN UPDATE SET                           &#xA;&#x9;&#x9;    t.Title                     =s.[title]&#xA;&#x9;&#x9;   ,t.[Description]             =s.[description]&#xA;&#x9;&#x9;   ,t.StartAt                   =s.[start_at]&#xA;&#x9;&#x9;   ,t.EndAt                     =s.[end_at]&#xA;&#x9;&#x9;   ,t.HomeworkUrl               =s.[homework_url]&#xA;&#x9;&#x9;   ,t.TeacherId                 =s.[teacher_id]&#xA;&#x9;&#x9;   ,t.StreamModuleKey           =s.[stream_module_id]&#xA;&#x9;&#x9;   ,t.StreamKey&#x9;&#x9;&#x9;&#x9;    =s.StreamKey&#xA;&#x9;&#x9;   ,t.CourseKey&#x9;&#x9;&#x9;&#x9;    =s.CourseKey&#xA;&#x9;&#x9;   ,t.DeletedAt                 =s.[deleted_at]&#xA;&#x9;&#x9;   ,t.OnlineLessonJoinUrl       =s.[online_lesson_join_url]&#xA;&#x9;&#x9;   ,t.OnlineLessonRecordingUrl  =s.[online_lesson_recording_url]&#xA;&#xA;WHEN NOT MATCHED BY TARGET &#xA;    THEN INSERT (Id,Title,[Description],StartAt,EndAt,HomeworkUrl,TeacherId,StreamModuleKey,StreamKey,CourseKey,DeletedAt,OnlineLessonJoinUrl,OnlineLessonRecordingUrl)&#xA;         VALUES (s.Id,s.[title],s.[description],s.[start_at],s.[end_at],s.[homework_url],s.[teacher_id],s.[stream_module_id],s.StreamKey,s.CourseKey,s.[deleted_at],s.[online_lesson_join_url],s.[online_lesson_recording_url]);&#xA;--WHEN NOT MATCHED BY SOURCE &#xA;--    THEN DELETE;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{5BCF9831-F88C-4DD2-B7D6-D2A4DFDE9B7E}"
+      DTS:From="Package\Process Course"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Process Stream" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{022315A9-117D-4995-ABC6-79089B093706}"
+      DTS:From="Package\Process Stream"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Process StreamModule" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{1C2E2DB6-6736-4A55-9E23-6ACA70551E92}"
+      DTS:From="Package\Process StreamModule"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Process StreamModuleLesson" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="249.6,54.4"
+          Id="Package\Process Stream"
+          TopLeft="344.166652990713,240.798148177803" />
+        <NodeLayout
+          Size="249.6,54.4"
+          Id="Package\Process Course"
+          TopLeft="256.66665646765,111.622221494428" />
+        <NodeLayout
+          Size="249.6,54.4"
+          Id="Package\Process StreamModule"
+          TopLeft="478.703684681729,369.011111890563" />
+        <NodeLayout
+          Size="249.6,54.4"
+          Id="Package\Process StreamModuleLesson"
+          TopLeft="564.166644248699,499.150001544555" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="381.46665646765,166.022221494428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.4999965230627,74.7759266833759"
+              Start="0,0"
+              End="87.4999965230627,67.2759266833759">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.387963341688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.387963341688"
+                    Point2="0,37.387963341688"
+                    Point3="4,37.387963341688" />
+                  <mssgle:LineSegment
+                    End="83.4999965230627,37.387963341688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83.4999965230627,37.387963341688"
+                    Point2="87.4999965230627,37.387963341688"
+                    Point3="87.4999965230627,41.387963341688" />
+                  <mssgle:LineSegment
+                    End="87.4999965230627,67.2759266833759" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="468.966652990713,295.198148177803">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="134.537031691016,73.81296371276"
+              Start="0,0"
+              End="134.537031691016,66.31296371276">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.90648185638" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.90648185638"
+                    Point2="0,36.90648185638"
+                    Point3="4,36.90648185638" />
+                  <mssgle:LineSegment
+                    End="130.537031691016,36.90648185638" />
+                  <mssgle:CubicBezierSegment
+                    Point1="130.537031691016,36.90648185638"
+                    Point2="134.537031691016,36.90648185638"
+                    Point3="134.537031691016,40.90648185638" />
+                  <mssgle:LineSegment
+                    End="134.537031691016,66.31296371276" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="603.503684681729,423.411111890563">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85.46295956697,75.7388896539919"
+              Start="0,0"
+              End="85.46295956697,68.2388896539919">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.869444826996" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.869444826996"
+                    Point2="0,37.869444826996"
+                    Point3="4,37.869444826996" />
+                  <mssgle:LineSegment
+                    End="81.46295956697,37.869444826996" />
+                  <mssgle:CubicBezierSegment
+                    Point1="81.46295956697,37.869444826996"
+                    Point2="85.46295956697,37.869444826996"
+                    Point3="85.46295956697,41.869444826996" />
+                  <mssgle:LineSegment
+                    End="85.46295956697,68.2388896539919" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
